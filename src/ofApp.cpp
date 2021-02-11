@@ -30,7 +30,10 @@ void ofApp::update(){
     /* The update method is called muliple times per second
     It's in charge of updating variables and the logic of our app */
     ofSoundUpdate(); // Updates all sound players
+    if(!pause)
+    {
     visualizer.updateAmplitudes(); // Updates Amplitudes for visualizer
+    }
 }
 
 //--------------------------------------------------------------
@@ -109,6 +112,15 @@ void ofApp::keyPressed(int key){
             mode = '4';
             setup();
             break;
+        case 'a':
+        if(!pause)
+        {
+            pause = true;
+        }
+        else
+        {
+            pause = false;
+        }
     }
 }
 

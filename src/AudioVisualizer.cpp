@@ -32,6 +32,7 @@ vector<float> AudioVisualizer::getAmplitudes() {
     for(int i = 0; i < bands; i++) {
         amplitudes.push_back(fftSmooth[i] * -200);
     }
+    
 
     return amplitudes;
 }
