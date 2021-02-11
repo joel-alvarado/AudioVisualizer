@@ -55,7 +55,7 @@ void ofApp::drawMode1(vector<float> amplitudes){
         ofFill(); // Drawn Shapes will be filled in with color
         ofSetColor(256); // This resets the color of the "brush" to white
         ofDrawBitmapString("Rectangle Height Visualizer", 0, 15);
-        ofSetColor(189, 45, 135); 
+        ofSetColor(ofRandom(250), ofRandom(250), ofRandom(250)); 
         ofDrawRectangle(2, ofGetHeight() - 100, 50,  amplitudes[0]);
 }
 void ofApp::drawMode2(vector<float> amplitudes){
