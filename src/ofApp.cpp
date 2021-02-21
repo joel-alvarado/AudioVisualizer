@@ -5,24 +5,7 @@ void ofApp::setup(){
     sound.load("beat.wav"); //Loads a sound file (in bin/data/)
     sound.setLoop(true); // Makes the song loop indefinitely
     sound.setVolume(1); // Sets the song volume
-
-    switch (mode)
-    {
-    case '1':
-        ofSetBackgroundColor(10, 50,56); // Sets the Background Color
-        break;
-    case '2':
-        ofSetBackgroundColor(50, 50, 50);
-        break;
-    case '3':
-        ofSetBackgroundColor(200, 70, 70);
-        break;
-    case '4':
-        ofSetBackgroundColor(35, 0, 15);
-    default:
     ofSetBackgroundColor(36, 32,56); // Sets the Background Color
-        break;
-    }; 
 }
 
 //--------------------------------------------------------------
@@ -60,6 +43,7 @@ void ofApp::drawMode1(vector<float> amplitudes){
         ofDrawBitmapString("Rectangle Height Visualizer", 0, 15);
         ofSetColor(ofRandom(250), ofRandom(250), ofRandom(250)); 
         ofDrawRectangle(2, ofGetHeight() - 100, 50,  amplitudes[0]);
+        ofSetBackgroundColor(10, 50,56);
 }
 void ofApp::drawMode2(vector<float> amplitudes){
         ofSetLineWidth(5); // Sets the line width
@@ -71,17 +55,20 @@ void ofApp::drawMode2(vector<float> amplitudes){
             ofSetColor((bands - i)*32 %256,18,144); // Color varies between frequencies
             ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, amplitudes[0]/(i +1));
         }
+        ofSetBackgroundColor(50, 50, 50);
 }
 
 void ofApp::drawMode3(vector<float> amplitudes){
     ofSetColor(256); // This resets the color of the "brush" to white
     ofDrawBitmapString("Rectangle Width Visualizer", 0, 15);
     // YOUR CODE HERE
+    ofSetBackgroundColor(200, 70, 70);
 }
 void ofApp::drawMode4(vector<float> amplitudes){
     ofSetColor(256); // This resets the color of the "brush" to white
     ofDrawBitmapString("Custom Visualizer", 0, 15);
     // YOUR CODE HERE
+    ofSetBackgroundColor(35, 0, 15);
 }
 
 //--------------------------------------------------------------
@@ -109,14 +96,8 @@ void ofApp::keyPressed(int key){
             mode = '4';
             break;
         case 'a':
-        if(!pause)
-        {
-            pause = true;
-        }
-        else
-        {
-            pause = false;
-        }
+            toggleVisualizer();
+            break;
         case 'q':
             loadNewSound("geesebeat.wav");
             break;
@@ -190,4 +171,12 @@ void ofApp::loadNewSound(string newSound){
                 sound.play();
                 current_song = newSound;
             }
+}
+//--------------------------------------------------------------
+void ofApp::toggleVisualizer() {
+    if(!pause) {
+            pause = true;
+        } else {
+            pause = false;
+        }
 }

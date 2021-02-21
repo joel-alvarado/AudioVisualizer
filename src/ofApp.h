@@ -26,6 +26,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		void loadNewSound(string newSound);
+		void toggleVisualizer();
 	private:
 		ofSoundPlayer sound;
 		AudioVisualizer visualizer;
