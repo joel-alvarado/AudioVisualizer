@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "AudioVisualizer.h"
+#include <iostream>
 
 class ofApp : public ofBaseApp{
 	public:
@@ -24,6 +25,7 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		void loadNewSound(string newSound);
 	private:
 		ofSoundPlayer sound;
 		AudioVisualizer visualizer;
@@ -31,4 +33,5 @@ class ofApp : public ofBaseApp{
 		bool playing = false;
 		bool pause = false;
 		char mode = '1';
+		string current_song = "beat.wav";
 };

@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    sound.loadSound("beat.wav"); //Loads a sound file (in bin/data/)
+    sound.load("beat.wav"); //Loads a sound file (in bin/data/)
     sound.setLoop(true); // Makes the song loop indefinitely
     sound.setVolume(1); // Sets the song volume
 
@@ -98,19 +98,15 @@ void ofApp::keyPressed(int key){
             break;
         case '1':
             mode = '1';
-            setup();
             break;
         case '2':
             mode = '2';
-            setup();
             break;
         case '3':
             mode = '3';
-            setup();
             break;
         case '4':
             mode = '4';
-            setup();
             break;
         case 'a':
         if(!pause)
@@ -121,6 +117,18 @@ void ofApp::keyPressed(int key){
         {
             pause = false;
         }
+        case 'q':
+            loadNewSound("geesebeat.wav");
+            break;
+        case 'w':
+            loadNewSound("pigeon-coo.wav");
+            break;
+        case 'e':
+            loadNewSound("rock-song.wav");
+            break;
+        case 'r':
+            loadNewSound("beat.wav");
+            break;
     }
 }
 
@@ -172,4 +180,14 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+//--------------------------------------------------------------
+void ofApp::loadNewSound(string newSound){
+    if(current_song != newSound) {
+                sound.stop();
+                sound.unload();
+                sound.load(newSound);
+                sound.play();
+                current_song = newSound;
+            }
 }
