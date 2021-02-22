@@ -211,15 +211,9 @@ void ofApp::displayVisualizerInfo() {
 }
 //---------------------------------------------------------------
 void ofApp::rectangleAmpDraw(vector<float> amplitudes) {
-    for(int i = 0; i < 65; i++){
-        if(i == 0)
-        {
-            ofDrawRectangle(0, ofGetHeight() - 100, ofGetWidth()/64,  amplitudes[0]);
-        }
-        else if(i > 0)
-        {
-            ofDrawRectangle(ofGetWidth()/64*i, ofGetHeight() - 100, ofGetWidth()/64,  amplitudes[i]);
-        }
+    for(int i = 0; i < 64; i++){
+            ofDrawRectangle(ofGetWidth()/64*i, ofGetHeight(), ofGetWidth()/64,  amplitudes[i]);
+        
     }
     
 }
