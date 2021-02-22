@@ -40,4 +40,5 @@ class ofApp : public ofBaseApp{
 		string current_song = "beat.wav";
 		string visualizerStatus = "ON";
 		float volume = sound.getVolume();
+		float volumePercentage = (volume/1)*100;
 };

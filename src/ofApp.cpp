@@ -69,9 +69,12 @@ void ofApp::drawMode3(vector<float> amplitudes){
     ofSetBackgroundColor(200, 70, 70);
 }
 void ofApp::drawMode4(vector<float> amplitudes){
-    ofSetColor(256); // This resets the color of the "brush" to white
+    ofFill();
     ofDrawBitmapString("Custom Visualizer", 0, 15);
-    // YOUR CODE HERE
+    ofSetColor(ofRandom(250), ofRandom(250), ofRandom(250));
+    ofDrawRectangle(ofGetWidth()/2, ofGetHeight()/2, amplitudes[0]/4+20, amplitudes[0]/4+20);
+    ofDrawRectangle(ofGetWidth()/2, ofGetHeight()/2, -1*(amplitudes[0]/4+20), -1*(amplitudes[0]/4+20));
+    ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, amplitudes[0]/5+20, amplitudes[0]/5+20);
     ofSetBackgroundColor(35, 0, 15);
 }
 
@@ -117,13 +120,13 @@ void ofApp::keyPressed(int key){
         case '=':
             if(sound.getVolume() < 1.0) {
             sound.setVolume((sound.getVolume())+0.1);
-            volume += 0.1;
+            volumePercentage += 10;
             }
             break;
         case '-':
             if(sound.getVolume() > 0.0) {
             sound.setVolume((sound.getVolume())-0.1);
-            volume -= 0.1;
+            volumePercentage -= 10;
             }
             break;
 
@@ -206,8 +209,8 @@ void ofApp::displayVisualizerInfo() {
     }
     ofDrawBitmapString("Current Song: ", 0, 45);
     ofDrawBitmapString(current_song, 115, 45);
-    ofDrawBitmapString("Volume: ", 0, 60);
-    ofDrawBitmapString((to_string(volume)), 70, 60);
+    ofDrawBitmapString("Volume:    %", 0, 60);
+    ofDrawBitmapString(to_string((int)volumePercentage), 60, 60);
     
 }
 //---------------------------------------------------------------
@@ -220,9 +223,10 @@ void ofApp::rectangleAmpDraw(vector<float> amplitudes) {
 }
 //---------------------------------------------------------------
 void ofApp::rectangleAmpDraw(vector<float> amplitudes, bool sideways) {
-    for(int i = 0; i < 64; i++){
+    for(int i = 0; i < amplitudes.size(); i++){
             ofDrawRectangle(ofGetWidth(), ofGetHeight()/64*i, amplitudes[i],  ofGetHeight()/64);
         
     }
     
 }
+//---------------------------------------------------------------
