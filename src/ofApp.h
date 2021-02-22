@@ -11,6 +11,7 @@ class ofApp : public ofBaseApp{
 		void draw();
 
 		void drawMode1(vector<float> amplitudes);
+		void rectangleAmpDraw(vector<float> amplitudes);
 		void drawMode2(vector<float> amplitudes);
 		void drawMode3(vector<float> amplitudes);
 		void drawMode4(vector<float> amplitudes);
