@@ -62,9 +62,10 @@ void ofApp::drawMode2(vector<float> amplitudes){
 }
 
 void ofApp::drawMode3(vector<float> amplitudes){
-    ofSetColor(256); // This resets the color of the "brush" to white
+    ofFill();  // This resets the color of the "brush" to white
     ofDrawBitmapString("Rectangle Width Visualizer", 0, 15);
-    // YOUR CODE HERE
+    ofSetColor(ofRandom(250), ofRandom(250), ofRandom(250));
+    rectangleAmpDraw(amplitudes, true);
     ofSetBackgroundColor(200, 70, 70);
 }
 void ofApp::drawMode4(vector<float> amplitudes){
@@ -213,6 +214,14 @@ void ofApp::displayVisualizerInfo() {
 void ofApp::rectangleAmpDraw(vector<float> amplitudes) {
     for(int i = 0; i < 64; i++){
             ofDrawRectangle(ofGetWidth()/64*i, ofGetHeight(), ofGetWidth()/64,  amplitudes[i]);
+        
+    }
+    
+}
+//---------------------------------------------------------------
+void ofApp::rectangleAmpDraw(vector<float> amplitudes, bool sideways) {
+    for(int i = 0; i < 64; i++){
+            ofDrawRectangle(ofGetWidth(), ofGetHeight()/64*i, amplitudes[i],  ofGetHeight()/64);
         
     }
     
