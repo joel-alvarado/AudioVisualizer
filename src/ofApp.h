@@ -27,6 +27,7 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 		void loadNewSound(string newSound);
 		void toggleVisualizer();
+		void displayVisualizerInfo();
 	private:
 		ofSoundPlayer sound;
 		AudioVisualizer visualizer;
@@ -35,4 +36,5 @@ class ofApp : public ofBaseApp{
 		bool pause = false;
 		char mode = '1';
 		string current_song = "beat.wav";
+		string visualizerStatus = "ON";
 };

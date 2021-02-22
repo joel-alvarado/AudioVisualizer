@@ -23,6 +23,8 @@ void ofApp::update(){
 void ofApp::draw(){
     /* The update method is called muliple times per second
     It's in charge of drawing all figures and text on screen */
+    ofSetColor(256);
+    displayVisualizerInfo();
     if(!playing){
         ofDrawBitmapString("Press 'p' to play some music!", ofGetWidth()/2 - 50, ofGetHeight()/2);
     }
@@ -179,4 +181,14 @@ void ofApp::toggleVisualizer() {
         } else {
             pause = false;
         }
+}
+//--------------------------------------------------------------
+void ofApp::displayVisualizerInfo() {
+    if(pause == true) {
+        ofDrawBitmapString("Visualizer: OFF", 0, 30);
+    } else {
+        ofDrawBitmapString("Visualizer: ON", 0, 30);
+    }
+    ofDrawBitmapString("Current Song: ", 0, 45);
+    ofDrawBitmapString(current_song, 115, 45);
 }
