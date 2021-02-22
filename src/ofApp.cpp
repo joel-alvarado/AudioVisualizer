@@ -1,4 +1,5 @@
 #include "ofApp.h"
+#include <string>
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -112,6 +113,19 @@ void ofApp::keyPressed(int key){
         case 'r':
             loadNewSound("beat.wav");
             break;
+        case '=':
+            if(sound.getVolume() < 1.0) {
+            sound.setVolume((sound.getVolume())+0.1);
+            volume += 0.1;
+            }
+            break;
+        case '-':
+            if(sound.getVolume() > 0.0) {
+            sound.setVolume((sound.getVolume())-0.1);
+            volume -= 0.1;
+            }
+            break;
+
     }
 }
 
@@ -191,4 +205,8 @@ void ofApp::displayVisualizerInfo() {
     }
     ofDrawBitmapString("Current Song: ", 0, 45);
     ofDrawBitmapString(current_song, 115, 45);
+    ofDrawBitmapString("Volume: ", 0, 60);
+    ofDrawBitmapString((to_string(volume)), 70, 60);
+    
 }
+//---------------------------------------------------------------

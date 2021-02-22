@@ -37,4 +37,5 @@ class ofApp : public ofBaseApp{
 		char mode = '1';
 		string current_song = "beat.wav";
 		string visualizerStatus = "ON";
+		float volume = sound.getVolume();
 };
