@@ -18,6 +18,9 @@ void ofApp::update(){
     {
     visualizer.updateAmplitudes(); // Updates Amplitudes for visualizer
     }
+    playInput(record);
+
+
 }
 
 //--------------------------------------------------------------
@@ -145,6 +148,11 @@ void ofApp::keyPressed(int key){
             recording('-');
             }
             break;
+        case 't':
+            if(!replay && record.size() > 0)
+            {replay = true; rec = false;}
+            else{replay = false;}
+        break;
 
     }
 }
@@ -256,8 +264,23 @@ void ofApp::recording(char input)
         record.push_back(input);
 
     };
-
-    
-
-
 }
+//---------------------------------------------------------------
+void ofApp::playInput(vector<char> record)
+{
+    if(replay)
+    {
+
+        if(TickCount() % 60 == 0 && replayCounter < record.size())
+        {
+            keyPressed(record[replayCounter]);
+            replayCounter++;
+        }
+        else if(replayCounter >= record.size())
+        {
+            replayCounter = 0;
+            replay = false;
+        }
+    }
+}
+//---------------------------------------------------------------

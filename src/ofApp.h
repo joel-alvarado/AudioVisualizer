@@ -15,6 +15,9 @@ class ofApp : public ofBaseApp{
 		void rectangleAmpDraw(vector<float> amplitudes);
 		void rectangleAmpDraw(vector<float> amplitudes, bool sideways);
 		void recording(char input);
+		void playInput(vector<char> record);
+		vector<char> getRecord(){return record;};
+		void delayExecute(int sec);
 		void drawMode2(vector<float> amplitudes);
 		void drawMode3(vector<float> amplitudes);
 		void drawMode4(vector<float> amplitudes);
@@ -39,7 +42,9 @@ class ofApp : public ofBaseApp{
 		bool playing = false;
 		bool pause = false;
 		bool rec = false;
+		bool replay = false;
 		char mode = '1';
+		int replayCounter = 0;
 		string current_song = "beat.wav";
 		string visualizerStatus = "ON";
 		float volume = sound.getVolume();
