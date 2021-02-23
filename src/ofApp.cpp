@@ -18,6 +18,7 @@ void ofApp::update(){
     {
     visualizer.updateAmplitudes(); // Updates Amplitudes for visualizer
     }
+    tickCount++;
     playInput(record);
 
 
@@ -92,43 +93,33 @@ void ofApp::keyPressed(int key){
                 sound.play();
             }
             playing = !playing;
-            recording('p');
             break;
         case '1':
             mode = '1';
-            recording('1');
             break;
         case '2':
-            mode = '2';
-            recording('2');
+            mode = '2';  
             break;
         case '3':
-            mode = '3';
-            recording('3');
+            mode = '3'; 
             break;
         case '4':
             mode = '4';
-            recording('4');
             break;
         case 'a':
             toggleVisualizer();
-            recording('a');
             break;
         case 'q':
             loadNewSound("geesebeat.wav");
-            recording('q');
             break;
         case 'w':
             loadNewSound("pigeon-coo.wav");
-            recording('w');
             break;
         case 'e':
             loadNewSound("rock-song.wav");
-            recording('e');
             break;
         case 's':
             loadNewSound("beat.wav");
-            recording('s');
             break;
         case 'r':
             if(!rec){record.clear(); rec = true;}
@@ -138,14 +129,12 @@ void ofApp::keyPressed(int key){
             if(sound.getVolume() < 1.0) {
             sound.setVolume((sound.getVolume())+0.1);
             volumePercentage += 10;
-            recording('=');
             }
             break;
         case '-':
             if(sound.getVolume() > 0.0) {
             sound.setVolume((sound.getVolume())-0.1);
             volumePercentage -= 10;
-            recording('-');
             }
             break;
         case 't':
@@ -155,6 +144,8 @@ void ofApp::keyPressed(int key){
         break;
 
     }
+    if(key != 'r' && key != 't'){recording(key);}
+    
 }
 
 //--------------------------------------------------------------
@@ -259,11 +250,11 @@ void ofApp::rectangleAmpDraw(vector<float> amplitudes, bool sideways) {
 //---------------------------------------------------------------
 void ofApp::recording(char input)
 {
-    if(rec)
-    {
-        record.push_back(input);
+        if(rec)
+        {
+            record.push_back(input);
 
-    };
+        }
 }
 //---------------------------------------------------------------
 void ofApp::playInput(vector<char> record)
@@ -271,7 +262,7 @@ void ofApp::playInput(vector<char> record)
     if(replay)
     {
 
-        if(TickCount() % 60 == 0 && replayCounter < record.size())
+        if(tickCount % 60 == 0 && replayCounter < record.size())
         {
             keyPressed(record[replayCounter]);
             replayCounter++;

@@ -45,6 +45,7 @@ class ofApp : public ofBaseApp{
 		bool replay = false;
 		char mode = '1';
 		int replayCounter = 0;
+		int tickCount = 0;
 		string current_song = "beat.wav";
 		string visualizerStatus = "ON";
 		float volume = sound.getVolume();
