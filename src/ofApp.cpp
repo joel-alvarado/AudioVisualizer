@@ -89,44 +89,60 @@ void ofApp::keyPressed(int key){
                 sound.play();
             }
             playing = !playing;
+            recording('p');
             break;
         case '1':
             mode = '1';
+            recording('1');
             break;
         case '2':
             mode = '2';
+            recording('2');
             break;
         case '3':
             mode = '3';
+            recording('3');
             break;
         case '4':
             mode = '4';
+            recording('4');
             break;
         case 'a':
             toggleVisualizer();
+            recording('a');
             break;
         case 'q':
             loadNewSound("geesebeat.wav");
+            recording('q');
             break;
         case 'w':
             loadNewSound("pigeon-coo.wav");
+            recording('w');
             break;
         case 'e':
             loadNewSound("rock-song.wav");
+            recording('e');
+            break;
+        case 's':
+            loadNewSound("beat.wav");
+            recording('s');
             break;
         case 'r':
-            loadNewSound("beat.wav");
+            if(!rec){record.clear(); rec = true;}
+            else{rec = false;}
             break;
         case '=':
             if(sound.getVolume() < 1.0) {
             sound.setVolume((sound.getVolume())+0.1);
             volumePercentage += 10;
+            recording('=');
             }
             break;
         case '-':
             if(sound.getVolume() > 0.0) {
             sound.setVolume((sound.getVolume())-0.1);
             volumePercentage -= 10;
+            recording('-');
             }
             break;
 
@@ -211,6 +227,9 @@ void ofApp::displayVisualizerInfo() {
     ofDrawBitmapString(current_song, 115, 45);
     ofDrawBitmapString("Volume:    %", 0, 60);
     ofDrawBitmapString(to_string((int)volumePercentage), 60, 60);
+
+    if(rec){ofDrawBitmapString("REC ON", 0, 75);}
+    else{ofDrawBitmapString("Keys pressed: ", 0, 75); ofDrawBitmapString(record, 0, 90);}
     
 }
 //---------------------------------------------------------------
@@ -230,3 +249,15 @@ void ofApp::rectangleAmpDraw(vector<float> amplitudes, bool sideways) {
     
 }
 //---------------------------------------------------------------
+void ofApp::recording(char input)
+{
+    if(rec)
+    {
+        record.push_back(input);
+
+    };
+
+    
+
+
+}

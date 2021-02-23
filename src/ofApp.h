@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "AudioVisualizer.h"
 #include <iostream>
+#include <vector>
 
 class ofApp : public ofBaseApp{
 	public:
@@ -13,6 +14,7 @@ class ofApp : public ofBaseApp{
 		void drawMode1(vector<float> amplitudes);
 		void rectangleAmpDraw(vector<float> amplitudes);
 		void rectangleAmpDraw(vector<float> amplitudes, bool sideways);
+		void recording(char input);
 		void drawMode2(vector<float> amplitudes);
 		void drawMode3(vector<float> amplitudes);
 		void drawMode4(vector<float> amplitudes);
@@ -36,9 +38,12 @@ class ofApp : public ofBaseApp{
 		
 		bool playing = false;
 		bool pause = false;
+		bool rec = false;
 		char mode = '1';
 		string current_song = "beat.wav";
 		string visualizerStatus = "ON";
 		float volume = sound.getVolume();
 		float volumePercentage = (volume/1)*100;
+		vector<char> record;
+		
 };
