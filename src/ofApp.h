@@ -17,6 +17,8 @@ class ofApp : public ofBaseApp{
 		void recording(char input);
 		void playInput(vector<char> record);
 		vector<char> getRecord(){return record;};
+		void keyIndex(int key);
+
 		void delayExecute(int sec);
 		void drawMode2(vector<float> amplitudes);
 		void drawMode3(vector<float> amplitudes);

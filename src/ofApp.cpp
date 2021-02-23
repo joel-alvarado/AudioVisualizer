@@ -85,65 +85,11 @@ void ofApp::drawMode4(vector<float> amplitudes){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     // This method is called automatically when any key is pressed
-    switch(key){
-        case 'p':
-            if(playing){
-                sound.stop();
-            }else{
-                sound.play();
-            }
-            playing = !playing;
-            break;
-        case '1':
-            mode = '1';
-            break;
-        case '2':
-            mode = '2';  
-            break;
-        case '3':
-            mode = '3'; 
-            break;
-        case '4':
-            mode = '4';
-            break;
-        case 'a':
-            toggleVisualizer();
-            break;
-        case 'q':
-            loadNewSound("geesebeat.wav");
-            break;
-        case 'w':
-            loadNewSound("pigeon-coo.wav");
-            break;
-        case 'e':
-            loadNewSound("rock-song.wav");
-            break;
-        case 's':
-            loadNewSound("beat.wav");
-            break;
-        case 'r':
-            if(!rec){record.clear(); rec = true;}
-            else{rec = false;}
-            break;
-        case '=':
-            if(sound.getVolume() < 1.0) {
-            sound.setVolume((sound.getVolume())+0.1);
-            volumePercentage += 10;
-            }
-            break;
-        case '-':
-            if(sound.getVolume() > 0.0) {
-            sound.setVolume((sound.getVolume())-0.1);
-            volumePercentage -= 10;
-            }
-            break;
-        case 't':
-            if(!replay && record.size() > 0)
-            {replay = true; rec = false;}
-            else{replay = false;}
-        break;
-
+    if(!replay)
+    {
+        keyIndex(key);
     }
+
     if(key != 'r' && key != 't'){recording(key);}
     
 }
@@ -264,7 +210,7 @@ void ofApp::playInput(vector<char> record)
 
         if(tickCount % 60 == 0 && replayCounter < record.size())
         {
-            keyPressed(record[replayCounter]);
+            keyIndex(record[replayCounter]);
             replayCounter++;
         }
         else if(replayCounter >= record.size())
@@ -275,3 +221,65 @@ void ofApp::playInput(vector<char> record)
     }
 }
 //---------------------------------------------------------------
+void ofApp::keyIndex(int key)
+{
+    switch(key){
+        case 'p':
+            if(playing){
+                sound.stop();
+            }else{
+                sound.play();
+            }
+            playing = !playing;
+            break;
+        case '1':
+            mode = '1';
+            break;
+        case '2':
+            mode = '2';  
+            break;
+        case '3':
+            mode = '3'; 
+            break;
+        case '4':
+            mode = '4';
+            break;
+        case 'a':
+            toggleVisualizer();
+            break;
+        case 'q':
+            loadNewSound("geesebeat.wav");
+            break;
+        case 'w':
+            loadNewSound("pigeon-coo.wav");
+            break;
+        case 'e':
+            loadNewSound("rock-song.wav");
+            break;
+        case 's':
+            loadNewSound("beat.wav");
+            break;
+        case 'r':
+            if(!rec){record.clear(); rec = true;}
+            else{rec = false;}
+            break;
+        case '=':
+            if(sound.getVolume() < 1.0) {
+            sound.setVolume((sound.getVolume())+0.1);
+            volumePercentage += 10;
+            }
+            break;
+        case '-':
+            if(sound.getVolume() > 0.0) {
+            sound.setVolume((sound.getVolume())-0.1);
+            volumePercentage -= 10;
+            }
+            break;
+        case 't':
+            if(!replay && record.size() > 0)
+            {replay = true; rec = false;}
+            else{replay = false;}
+        break;
+
+    }
+}
