@@ -43,6 +43,9 @@ void ofApp::draw(){
     }else if(mode == '4'){
         drawMode4(amplitudes);
     }
+    else if(mode == '5'){
+        drawMode5(amplitudes);
+    }
 }
 void ofApp::drawMode1(vector<float> amplitudes){
         ofFill(); // Drawn Shapes will be filled in with color
@@ -80,6 +83,21 @@ void ofApp::drawMode4(vector<float> amplitudes){
     ofDrawRectangle(ofGetWidth()/2, ofGetHeight()/2, -1*(amplitudes[0]/4+20), -1*(amplitudes[0]/4+20));
     ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, amplitudes[0]/5+20, amplitudes[0]/5+20);
     ofSetBackgroundColor(35, 0, 15);
+}
+
+void ofApp::drawMode5(vector<float> amplitudes){
+    
+    ofDrawBitmapString("Bonus Visualizer", 0, 15);
+    ofSetLineWidth(5); 
+    ofNoFill();
+    int bands = amplitudes.size();
+        for(int i=0; i< bands; i++){
+            ofSetColor((bands - i)*32 %256,18,144);
+            int enlarge = (((50)*i) + (0.1*(i+1)*amplitudes[i])); //implemented this integer to assign different sizes to every triangle
+            ofDrawTriangle(ofGetWidth()/2 - enlarge, ofGetHeight()/2 + enlarge, ofGetWidth()/2 + enlarge, ofGetHeight()/2 + enlarge,ofGetWidth()/2, ofGetHeight()/2 - enlarge);
+        } //Draws a triangle for every band and manipulates their respective coordinates according to the beat
+   
+    ofSetBackgroundColor(0, 0, 0);
 }
 
 //--------------------------------------------------------------
@@ -243,6 +261,9 @@ void ofApp::keyIndex(int key)
             break;
         case '4':
             mode = '4';
+            break;
+        case '5':
+            mode = '5';
             break;
         case 'a':
             toggleVisualizer();
