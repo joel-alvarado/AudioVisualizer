@@ -39,7 +39,6 @@ void ofApp::draw(){
         case '3': drawMode3(amplitudes); break;
         case '4': drawMode4(amplitudes); break;
         case '5': drawMode5(amplitudes); break;
-
     }
     ofSetColor(256);
     displayVisualizerInfo();
@@ -191,6 +190,12 @@ void ofApp::displayVisualizerInfo() {
     std::string recordedKeys(record.begin(), record.end());
     if(rec){ ofDrawBitmapString("REC ON", 0, 75); }
     else { ofDrawBitmapString("Keys pressed: " + recordedKeys, 0, 75); } 
+
+    // SHORCUTS ON TOP RIGHT
+    ofDrawBitmapString("Use keys 1 through 5 to change modes", ofGetWidth() - 340, 15);
+    ofDrawBitmapString("Use keys q, w, e & s to change song", ofGetWidth() - 340, 30);
+    ofDrawBitmapString("Use keys r & t to record and replay keys", ofGetWidth() - 340, 45);
+    ofDrawBitmapString("Use keys + & - to increase/decrease volume", ofGetWidth() - 340, 60);
 }
 //---------------------------------------------------------------
 void ofApp::rectangleAmpDraw(vector<float> amplitudes) {
