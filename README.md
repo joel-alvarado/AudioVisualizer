@@ -8,8 +8,8 @@ After compiling and running the project for the first time, you should be able t
 - Using different number keys, you can visualize the music in different ways:
     - 1: Rectangle Height Visualizer
     - 2: Circle Radius Visualizer
-    - 3: Rectangle Width Visualizer (to be implemented)
-    - 4: Custom Visualizer (to be implemented)
+    - 3: Rectangle Width Visualizer
+    - 4: Custom Visualize
 
 # Classes
 This project contains two classes that should be of your concern: ofApp and AudioVisualizer.
@@ -19,3 +19,20 @@ This is the class that brings most things together. Here, you will find the code
 
 ## AudioVisualizer
 The AudioVisualizer class provides us with the data needed to do the visualization. Using some of the tools OpenFrameworks provides us and math, we can obtain information such as the amplitude of the sound. 
+
+# How to Compile
+
+## Windows:
+
+1. Download and install the following version of [openFrameworks](http://example.com "openFrameworks")
+2. Install msys2 from [here](http://example.com "msys2")
+3. Extract the .zip file to your preferred directory.
+4. Using the MINGW32 CLI, navigate to `yourOpenFrameworksFolder/scripts/msys2` and execute the following command: `./install_dependencies.sh --noconfirm`
+to install the required dependencies.
+5. After installing the dependencies, execute `./compileOF.sh` to compile openFrameworks
+6. Once finished, you can clone this repository in the `apps/myApps` folder inside your openFrameworks folder
+7. When finished cloning, you can compile the project using the command `make` and run it using `make run`
+
+## Linux
+
+TODO
